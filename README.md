@@ -155,7 +155,116 @@ int main()
 ```
 
 #### Rasperry pi code
-As we can see the ra
+This code uses OpenCV (library for computer vision) to implement the real time object detection system on the Raspberry Pi using a pre-trained model. It also uses serial communications to interact the mbed. The script continuously captures images from the camera and processes these images to detect and annotate objects with bounding boxes and confidence scores. If a person is detected then it will communicate with the mbed using serial communication so the mbed can triger the alar. 
+
+```
+# Import the Open-CV extra functionalities
+import cv2
+import os
+from picamera2 import Picamera2
+from comu2 import communications, fake
+import time
+import serial
+
+
+def communications(fake=False):
+    try:
+        ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    except serial.SerialException as e:
+        print(f"Error opening serial port: {e}")
+        return -1
+
+    ser.bytesize = serial.EIGHTBITS    
+    ser.parity = serial.PARITY_NONE    
+    ser.stopbits = serial.STOPBITS_ONE  
+    ser.timeout = 0
+
+    try:
+        if (fake):
+            ser.write(b"B\r")
+        else:
+            ser.write(b"T\r")
+        time.sleep(2)  
+    except serial.SerialTimeoutException:
+        print("Write timeout error")
+        return -1
+    ser.close()
+
+
+users = []
+users.append(os.getlogin())
+
+classNames = []
+classFile = "/home/" + users[0] + "/Desktop/Object_Detection_Files/coco.names"
+with open(classFile, "rt") as f:
+    classNames = f.read().rstrip("\n").split("\n")
+
+configPath = "/home/" + \
+    users[0] + "/Desktop/Object_Detection_Files/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+weightsPath = "/home/" + \
+    users[0] + "/Desktop/Object_Detection_Files/frozen_inference_graph.pb"
+
+net = cv2.dnn_DetectionModel(weightsPath, configPath)
+net.setInputSize(320, 320)
+net.setInputScale(1.0 / 127.5)
+net.setInputMean((127.5, 127.5, 127.5))
+net.setInputSwapRB(True)
+
+
+
+def getObjects(img, thres, nms, draw=True, objects=[]):
+    classIds, confs, bbox = net.detect(
+        img, confThreshold=thres, nmsThreshold=nms)
+    # print(classIds,bbox)
+    if len(objects) == 0:
+        objects = classNames
+    objectInfo = []
+    if len(classIds) != 0:
+        for classId, confidence, box in zip(classIds.flatten(), confs.flatten(), bbox):
+            className = classNames[classId - 1]
+            if className in objects:
+                objectInfo.append([box, className])
+                if (draw):
+                    cv2.rectangle(img, box, color=(0, 255, 0), thickness=2)
+                    cv2.putText(img, classNames[classId-1].upper(), (box[0]+10, box[1]+30),
+                                cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+                    cv2.putText(img, str(round(confidence*100, 2)), (box[0]+200, box[1]+30),
+                                cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+
+    return img, objectInfo
+
+
+if _name_ == "_main_":
+    communications(True)
+    picam2 = Picamera2()
+    picam2.configure(picam2.create_preview_configuration(
+        main={"format": 'XRGB8888', "size": (640, 480)}))
+    picam2.start()
+
+    while True:
+        img = picam2.capture_array("main")
+        img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+        result, objectInfo = getObjects(img, 0.45, 0.2)
+        print(objectInfo)
+
+        for arr in objectInfo:
+
+            if arr[1] == 'person':
+                print('Thief')
+                communications()
+                time.sleep(2)
+                break
+
+        # cv2.imshow("Output",img)
+
+        k = cv2.waitKey(200)
+        if k == 27:    # Esc key to stop
+            # EXIT
+            picam2.stop()
+            cv2.destroyAllWindows()
+            break
+
+```
 
 ### Set-up instructions
 
