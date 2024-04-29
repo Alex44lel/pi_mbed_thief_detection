@@ -9,16 +9,8 @@ The ultrasonic detects a thief if he is close enough to the sensor. The camera i
 When a thief is detected, the alarm will sound on the speaker, a red blinking light will be turn on (a led for simplicity) and the door will be automatically closed (a motor in our case).
 
 ### Diagram
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+<br></br>
+![This is an image](finalece.drawio.svg)
 ### Wiring
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -44,7 +36,12 @@ recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
 ### Instructions
 ### HW setup
 ### Images
+
+<img src="pro3.jpeg" width="682" height="512">
+<img src="pro1.jpeg" width="682" height="512">
+
 ### Videos
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # this is atest
 
