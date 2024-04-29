@@ -1,4 +1,4 @@
-# Thief detecteion system (mbed 1769 + Raspberry Pi)
+# Thief detection system (mbed 1769 + Raspberry Pi)
 
 ### Project idea
 
@@ -22,7 +22,6 @@ When a thief is detected, the alarm will sound on the speaker, a red blinking li
 - Resistors
 - Transistor
 ### Diagram
-<br></br>
 ![This is an image](finalece.drawio.svg)
 ### Wiring
 | **MBED1768** | **Component** | **Pin Name** | **Misc.** |
