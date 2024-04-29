@@ -24,31 +24,7 @@ When a thief is detected, the alarm will sound on the speaker, a red blinking li
 ### Diagram
 ![This is an image](finalece.drawio.svg)
 ### Wiring
-| **MBED1768** | **Component** | **Pin Name** | **Misc.** |
-|--------------|--------------|--------------|--------------|
-| p5 | uSD File System	  | SPI MOSI  | -  |
-| p6  | uSD File System	  | SPI MISO  | -  |
-| p7  | uSD File System	  | SPI SCLK  | - |
-| p8  | uSD File System	  | CS  | -  |
-| Vout  | uSD File System	  | VCC  | -  |
-| Gnd  | uSD File System	  | Gnd  | -  |
-| p18  | Class D Amplifier	  | in+  | - |
-| -  | Class D Amplifier	  | pwr+  | 5V supply |
-| GND  | Class D Amplifier	  | in-  | - |
-| GND  | Class D Amplifier	  | pwr-  | - |
-| -  | Class D Amplifier	  | out+  | speaker+ |
-| -  | Class D Amplifier	  | out-  | speaker- |
-| Vu(5V)  | HC-SR04  | Vcc  | - |
-| Gnd  | HC-SR04  | Gnd  | - |
-| p12  | HC-SR04  | trig  | - |
-| p13  | HC-SR04  | echo  | - |
-| -  | motor  | Vcc  | 5V supply (transistor) |
-| Gnd  | motor  | Gnd  | - |
-| p24  | LED  | Vcc  | - |
-| Gnd  | LED  | Gnd  | - |
-| p21  | Transistor  | base  | - |
-| -  | Transistor  | emitter  | - |
-| -  | Transistor  | collector  | - |
+![This is an image](wiring.png)
 
 Additionally the camera is connected to Raspberry pi using the CSI interface and the mbed 1768 is connected to the Raspberry pi.
 
