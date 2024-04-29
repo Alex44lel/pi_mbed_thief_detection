@@ -12,16 +12,37 @@ When a thief is detected, the alarm will sound on the speaker, a red blinking li
 <br></br>
 ![This is an image](finalece.drawio.svg)
 ### Wiring
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+| **MBED1768** | **Component** | **Pin Name** | **Misc.** |
+|--------------|--------------|--------------|--------------|
+| p5 | uSD File System	  | SPI MOSI  | -  |
+| p6  | uSD File System	  | SPI MISO  | -  |
+| p7  | uSD File System	  | SPI SCLK  | - |
+| p8  | uSD File System	  | CS  | -  |
+| Vout  | uSD File System	  | VCC  | -  |
+| Gnd  | uSD File System	  | Gnd  | -  |
+| p18  | Class D Amplifier	  | in+  | - |
+| -  | Class D Amplifier	  | pwr+  | 5V supply |
+| GND  | Class D Amplifier	  | in-  | - |
+| GND  | Class D Amplifier	  | pwr-  | - |
+| -  | Class D Amplifier	  | out+  | speaker+ |
+| -  | Class D Amplifier	  | out-  | speaker- |
+| Vu(5V)  | HC-SR04  | Vcc  | - |
+| Gnd  | HC-SR04  | Gnd  | - |
+| p12  | HC-SR04  | trig  | - |
+| p13  | HC-SR04  | echo  | - |
+| -  | motor  | Vcc  | 5V supply (transistor) |
+| Gnd  | motor  | Gnd  | - |
+| p24  | LED  | Vcc  | - |
+| Gnd  | LED  | Gnd  | - |
+| p21  | Transistor  | base  | - |
+| -  | Transistor  | emitter  | - |
+| -  | Transistor  | collector  | - |
+
+
+
+
+
+
 ### Code
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -44,6 +65,4 @@ recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
 
 https://www.youtube.com/watch?v=e2ACNT02rpE
 
-# this is atest
 
-hello
