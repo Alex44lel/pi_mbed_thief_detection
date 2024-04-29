@@ -4,10 +4,23 @@
 
 This project aims to implment a thief detection system for a room/house. The idea is to install a camera and an ultrasonic sensor on the room you want to secure. The ultrasonic points in one angle and the camera on a different one (ideally we would have multiple ultrasonic sensors and cameras, but for simplicity we just have one of each).
 
-The ultrasonic detects a thief if he is close enough to the sensor. The camera is connected to a Raspberry Pi which is running an object detection model using tensorflow and opencv, so it detects the thief using this model. 
+The ultrasonic detects a thief if he is close enough to the sensor. The camera is connected to a Raspberry Pi which is running an object detection model using tensorflow and opencv, so it detects the thief using this model. The mbed manages all the sensors and actuators using threads thanks to the RTOS library.
 
 When a thief is detected, the alarm will sound on the speaker, a red blinking light will be turn on (a led for simplicity) and the door will be automatically closed (a motor in our case).
 
+### Components
+
+- mbed Microcontroller https://os.mbed.com/platforms/mbed-LPC1768/
+- Class D Amplifier https://os.mbed.com/users/4180_1/notebook/tpa2005d1-class-d-audio-amp/
+- Speaker https://os.mbed.com/users/4180_1/notebook/using-a-speaker-for-audio-output/
+- uSD Card File System https://os.mbed.com/cookbook/SD-Card-File-System
+- Potentiometer https://os.mbed.com/components/Potentiometer/
+- HC-SR04 https://os.mbed.com/components/HC-SR04/
+- DC motor https://www.bananarobotics.com/shop/Yellow-Gear-Motor-with-48-to-1-reduction-ratio
+- 5V Power Supply (and adapter jack)
+- Led
+- Resistors
+- Transistor
 ### Diagram
 <br></br>
 ![This is an image](finalece.drawio.svg)
@@ -286,7 +299,7 @@ https://www.youtube.com/watch?v=e2ACNT02rpE
 
 ### Conclusions + future work
 
-In this project we have showcased the capabilities of the mbed at the time of managing multple compenents using threads and connecting to a raspeberry pi for recieving data. Adittionally we have showed how to run object detection models on the raspberri PI.
+In this project we have showcased the capabilities of the mbed at the time of managing multple compenents using threads and connecting to a raspeberry pi for recieving data. Adittionally we have showed how to run object detection models on the raspberry pi.
 
 For future enhancements it would be interesting to install a camera that could rotate in all angles. Installing more ultrasonic sensors could also result in a more capable system.
 Finally it would also be important to integrate all the wiring within one single box.
